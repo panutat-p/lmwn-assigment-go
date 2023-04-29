@@ -16,6 +16,7 @@ func main() {
 
 	router.GET("/", src.Health)
 	router.GET("/persons", src.Persons)
+	router.GET("/groups", src.GroupByAge)
 	err := router.Run(":" + Port)
 	if err != nil {
 		log.Println("Failed to run the web server, err:", err)
