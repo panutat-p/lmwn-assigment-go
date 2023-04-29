@@ -12,7 +12,7 @@ func Health(c *gin.Context) {
 }
 
 func Persons(c *gin.Context) {
-	persons, err := GetPersons()
+	persons, err := GetCovidReport()
 	if err != nil {
 		log.Println("Failed to get COVID19 report, err:", err)
 		c.JSON(500, gin.H{

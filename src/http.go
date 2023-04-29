@@ -16,7 +16,7 @@ const (
 	ReportURL = "https://static.wongnai.com/devinterview/covid-cases.json"
 )
 
-func GetPersons() ([]Person, error) {
+func GetCovidReport() ([]Person, error) {
 	var (
 		report Response
 	)
