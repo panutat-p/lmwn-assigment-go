@@ -1,8 +1,9 @@
 package src
 
 import (
-	"github.com/gin-gonic/gin"
 	"log"
+
+	"github.com/gin-gonic/gin"
 )
 
 func Health(c *gin.Context) {
@@ -11,8 +12,8 @@ func Health(c *gin.Context) {
 	})
 }
 
-func Persons(c *gin.Context) {
-	persons, err := GetCovidReport()
+func Report(c *gin.Context) {
+	report, err := GetCovidReport()
 	if err != nil {
 		log.Println("Failed to get COVID19 report, err:", err)
 		c.JSON(500, gin.H{
@@ -21,9 +22,16 @@ func Persons(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, gin.H{
-		"persons": persons,
-	})
+	for _, e := range report {
+		if e.Province == "Nan" {
+			e.Province = ""
+		}
+		if e.ProvinceEn == "Nan" {
+			e.ProvinceEn = ""
+		}
+	}
+
+	c.JSON(200, report)
 }
 
 func GroupByAge(c *gin.Context) {

@@ -15,7 +15,7 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/", src.Health)
-	router.GET("/persons", src.Persons)
+	router.GET("/report", src.Report)
 	router.GET("/groups", src.GroupByAge)
 	err := router.Run(":" + Port)
 	if err != nil {
