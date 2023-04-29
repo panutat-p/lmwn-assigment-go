@@ -1,16 +1,20 @@
 package src
 
+type Response struct {
+	Data []Person `json:"data"`
+}
+
 type Person struct {
-	ConfirmDate    string      `json:"ConfirmDate"`
-	No             interface{} `json:"No"`
-	Age            int         `json:"Age"`
-	Gender         string      `json:"Gender"`
-	GenderEn       string      `json:"GenderEn"`
-	Nation         interface{} `json:"Nation"`
-	NationEn       string      `json:"NationEn"`
-	Province       string      `json:"Province"`
-	ProvinceID     int         `json:"ProvinceId"`
-	District       interface{} `json:"District"`
-	ProvinceEn     string      `json:"ProvinceEn"`
-	StatQuarantine int         `json:"StatQuarantine"`
+	ConfirmDate    string      `json:"confirm_date"`
+	No             interface{} `json:"no"`
+	Age            int         `json:"age"`
+	Gender         string      `json:"gender"`
+	GenderEn       string      `json:"gender_en"`
+	Nation         interface{} `json:"nation"`
+	NationEn       string      `json:"nation_en"`
+	Province       string      `json:"province"`
+	ProvinceID     int         `json:"province_id"`
+	District       interface{} `json:"district"`
+	ProvinceEn     string      `json:"province_en"`
+	StatQuarantine int         `json:"stat_quarantine"`
 }

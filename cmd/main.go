@@ -15,6 +15,7 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/", src.Health)
+	router.GET("/persons", src.Persons)
 	err := router.Run(":" + Port)
 	if err != nil {
 		log.Println("Failed to run the web server, err:", err)
