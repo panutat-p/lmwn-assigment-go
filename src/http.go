@@ -3,6 +3,13 @@ package src
 import (
 	"encoding/json"
 	"net/http"
+	"time"
+)
+
+var (
+	Client = http.Client{
+		Timeout: 5 * time.Second,
+	}
 )
 
 const (
@@ -14,7 +21,7 @@ func GetPersons() ([]Person, error) {
 		report Response
 	)
 
-	resp, err := http.Get(ReportURL)
+	resp, err := Client.Get(ReportURL)
 	if err != nil {
 		return nil, err
 	}
