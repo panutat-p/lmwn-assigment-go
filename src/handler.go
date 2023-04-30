@@ -49,14 +49,7 @@ func GroupByAge(c *gin.Context) {
 	)
 
 	for _, e := range persons {
-		if e.Province == "Nan" {
-			e.Province = ""
-		}
-		if e.ProvinceEn == "Nan" {
-			e.ProvinceEn = ""
-		}
-
-		if e.Province != "" {
+		if e.Province != "Nan" && e.Province != "" {
 			summary[e.Province] += e.Age
 		}
 	}
