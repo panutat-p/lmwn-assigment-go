@@ -32,15 +32,6 @@ func (h Handler) GetReport(c *gin.Context) {
 		return
 	}
 
-	for _, e := range report {
-		if e.Province == "Nan" {
-			e.Province = ""
-		}
-		if e.ProvinceEn == "Nan" {
-			e.ProvinceEn = ""
-		}
-	}
-
 	c.JSON(200, report)
 }
 
@@ -52,15 +43,6 @@ func (h Handler) GetSummary(c *gin.Context) {
 			"message": "Failed to get COVID19 report",
 		})
 		return
-	}
-
-	for _, e := range report {
-		if e.Province == "Nan" {
-			e.Province = ""
-		}
-		if e.ProvinceEn == "Nan" {
-			e.ProvinceEn = ""
-		}
 	}
 
 	param := []string{

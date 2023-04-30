@@ -1,17 +1,21 @@
 package src
 
+import "fmt"
+
 func GenerateSummary(report []*Person, provinces Set) Summary {
 	var (
 		summary = NewSummary()
 	)
 
 	for _, e := range report {
-		if provinces.Has(e.ProvinceEn) {
-			if _, ok := summary.Province[e.ProvinceEn]; !ok {
-				summary.Province[e.ProvinceEn] = e.ProvinceID
+		fmt.Printf("%+v\n", e)
+		key := string(e.ProvinceEn)
+		if provinces.Has(key) {
+			if _, ok := summary.Province[key]; !ok {
+				summary.Province[key] = e.ProvinceID
 			}
-			key := DetermineAge(e.Age)
-			summary.AgeGroup[key] += 1
+			group := DetermineAge(e.Age)
+			summary.AgeGroup[group] += 1
 		}
 	}
 
