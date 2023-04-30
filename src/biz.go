@@ -14,6 +14,7 @@ func GenerateSummary(report []*Person) Summary {
 		summary.AgeGroup[group] += 1
 	}
 
+	delete(summary.Province, "")
 	return summary
 }
 
