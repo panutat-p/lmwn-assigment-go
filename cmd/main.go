@@ -20,7 +20,7 @@ func main() {
 
 	router.GET("/", handler.Health)
 	router.GET("/report", handler.GetReport)
-	router.GET("/groups", handler.GetSummary)
+	router.GET("/summary", handler.GetSummary)
 	err := router.Run(":" + Port)
 	if err != nil {
 		log.Println("Failed to run the web server, err:", err)
