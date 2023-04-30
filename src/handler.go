@@ -45,7 +45,7 @@ func (h Handler) GetReport(c *gin.Context) {
 }
 
 func (h Handler) GetSummary(c *gin.Context) {
-	persons, err := h.report.GetCovidReport()
+	report, err := h.report.GetCovidReport()
 	if err != nil {
 		log.Println("Failed to get COVID19 report, err:", err)
 		c.JSON(500, gin.H{
@@ -54,18 +54,20 @@ func (h Handler) GetSummary(c *gin.Context) {
 		return
 	}
 
-	var (
-		summary = make(map[string]int)
-	)
-
-	for _, e := range persons {
-		if e.Province != "Nan" && e.Province != "" {
-			summary[e.Province] += e.Age
+	for _, e := range report {
+		if e.Province == "Nan" {
+			e.Province = ""
+		}
+		if e.ProvinceEn == "Nan" {
+			e.ProvinceEn = ""
 		}
 	}
 
-	c.JSON(200, gin.H{
-		"length":  len(summary),
-		"summary": summary,
-	})
+	param := []string{
+		"Nakhon Ratchasima",
+		"Nong Khai",
+	}
+	summary := GenerateSummary(report, NewSetFromSlice(param))
+
+	c.JSON(200, summary)
 }
