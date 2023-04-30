@@ -45,11 +45,16 @@ func (h Handler) GetSummary(c *gin.Context) {
 		return
 	}
 
-	param := []string{
-		"Nakhon Ratchasima",
-		"Nong Khai",
+	var (
+		summary Summary
+	)
+
+	filter := c.Query("filter")
+	if filter == "" {
+		summary = GenerateSummary(report)
+	} else {
+		summary = GenerateFilteredSummary(report, NewSetFromString(filter))
 	}
-	summary := GenerateSummary(report, NewSetFromSlice(param))
 
 	c.JSON(200, summary)
 }

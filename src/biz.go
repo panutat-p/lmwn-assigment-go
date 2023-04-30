@@ -1,6 +1,23 @@
 package src
 
-func GenerateSummary(report []*Person, provinces Set) Summary {
+func GenerateSummary(report []*Person) Summary {
+	var (
+		summary = NewSummary()
+	)
+
+	for _, e := range report {
+		key := string(e.ProvinceEn)
+		if _, ok := summary.Province[key]; !ok {
+			summary.Province[key] = e.ProvinceID
+		}
+		group := DetermineAge(int(e.Age))
+		summary.AgeGroup[group] += 1
+	}
+
+	return summary
+}
+
+func GenerateFilteredSummary(report []*Person, provinces Set) Summary {
 	var (
 		summary = NewSummary()
 	)

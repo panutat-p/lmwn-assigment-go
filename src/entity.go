@@ -6,7 +6,7 @@ type Response struct {
 
 type Person struct {
 	Age            NullInt   `json:"Age"`
-	ConfirmDate    string    `json:"ConfirmDate,omitempty"`
+	ConfirmDate    string    `json:"omitempty"`
 	District       string    `json:"District,omitempty"`
 	Gender         string    `json:"Gender,omitempty"`
 	GenderEn       string    `json:"GenderEn,omitempty"`
@@ -20,8 +20,8 @@ type Person struct {
 }
 
 type Summary struct {
-	Province map[string]int
-	AgeGroup map[string]int
+	Province map[string]int `json:"Province"`
+	AgeGroup map[string]int `json:"AgeGroup"`
 }
 
 func NewSummary() Summary {
