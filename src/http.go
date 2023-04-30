@@ -2,6 +2,8 @@ package src
 
 import (
 	"encoding/json"
+	"io"
+	"log"
 	"net/http"
 	"time"
 )
@@ -32,7 +34,7 @@ func (r Report) GetCovidReport() ([]*Person, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer CloseBody(resp.Body)
 
 	err = json.NewDecoder(resp.Body).Decode(&report)
 	if err != nil {
@@ -40,4 +42,11 @@ func (r Report) GetCovidReport() ([]*Person, error) {
 	}
 
 	return report.Data, nil
+}
+
+func CloseBody(body io.ReadCloser) {
+	err := body.Close()
+	if err != nil {
+		log.Println("Failed to close ReadCloser, err:", err)
+	}
 }
