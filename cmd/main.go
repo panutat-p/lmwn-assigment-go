@@ -1,18 +1,21 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"lmwn-assignment-go/src"
 	"log"
 	"time"
+
+	"github.com/gin-gonic/gin"
+
+	"lmwn-assignment-go/src"
 )
 
 const (
-	Port = "8080"
+	Port    = "8080"
+	BaseURL = "https://static.wongnai.com/devinterview/covid-cases.json"
 )
 
 func main() {
-	report := src.NewReport("https://static.wongnai.com/devinterview/covid-cases.json", 5*time.Second)
+	report := src.NewReport(BaseURL, 5*time.Second)
 	handler := src.NewHandler(report)
 
 	gin.SetMode(gin.ReleaseMode)
