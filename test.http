@@ -1,0 +1,17 @@
+GET https://static.wongnai.com/devinterview/covid-cases.json
+###
+
+GET http://localhost:8080
+###
+
+GET http://localhost:8080/report
+###
+
+GET http://localhost:8080/summary
+###
+
+GET http://localhost:8080/summary?filter=Nakhon+Ratchasima,Nong+Khai
+###
+
+GET http://localhost:8080/summary?filter=Samut+Sakhon,Bangkok
+###
