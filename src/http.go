@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+//go:generate mockgen -destination=../mock/reporter.go -package=mock lmwn-assignment-go/src Reporter
 type Reporter interface {
 	GetCovidReport() ([]*Person, error)
 }
