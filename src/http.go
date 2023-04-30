@@ -6,22 +6,28 @@ import (
 	"time"
 )
 
-var (
-	Client = http.Client{
-		Timeout: 5 * time.Second,
+type Reporter interface {
+	GetCovidReport() ([]*Person, error)
+}
+
+type Report struct {
+	c       http.Client
+	baseURL string
+}
+
+func NewReport(url string, timeout time.Duration) *Report {
+	return &Report{
+		c:       http.Client{Timeout: timeout},
+		baseURL: url,
 	}
-)
+}
 
-const (
-	ReportURL = "https://static.wongnai.com/devinterview/covid-cases.json"
-)
-
-func GetCovidReport() ([]*Person, error) {
+func (r Report) GetCovidReport() ([]*Person, error) {
 	var (
 		report Response
 	)
 
-	resp, err := Client.Get(ReportURL)
+	resp, err := r.c.Get(r.baseURL)
 	if err != nil {
 		return nil, err
 	}

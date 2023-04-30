@@ -6,14 +6,24 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Health(c *gin.Context) {
+type Handler struct {
+	report Reporter
+}
+
+func NewHandler(r Reporter) *Handler {
+	return &Handler{
+		report: r,
+	}
+}
+
+func (h Handler) Health(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"API version": "1.0.0",
 	})
 }
 
-func Report(c *gin.Context) {
-	report, err := GetCovidReport()
+func (h Handler) GetReport(c *gin.Context) {
+	report, err := h.report.GetCovidReport()
 	if err != nil {
 		log.Println("Failed to get COVID19 report, err:", err)
 		c.JSON(500, gin.H{
@@ -34,8 +44,8 @@ func Report(c *gin.Context) {
 	c.JSON(200, report)
 }
 
-func GroupByAge(c *gin.Context) {
-	persons, err := GetCovidReport()
+func (h Handler) GetSummary(c *gin.Context) {
+	persons, err := h.report.GetCovidReport()
 	if err != nil {
 		log.Println("Failed to get COVID19 report, err:", err)
 		c.JSON(500, gin.H{
