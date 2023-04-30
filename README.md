@@ -11,7 +11,7 @@ go run cmd/main.go
 
 ## How to test
 
-#### Use Curl commands
+#### Use `curl` commands
 ```shell
 # health check
 curl http://localhost:8080
@@ -23,6 +23,32 @@ curl http://localhost:8080/summary?filter=Nakhon+Ratchasima,Nong+Khai
 
 #### Use HTTP file
 open `test.http`, send a HTTP request using Goland or VS Code Rest Client
+
+## Project Structure
+```
+.
+├── cmd
+│    └── main.go
+└── src
+     ├── biz.go
+     ├── biz_test.go
+     ├── custom_type.go
+     ├── entity.go
+     ├── handler.go
+     ├── handler_test.go
+     ├── http.go
+     ├── http_test.go
+     ├── mock_reporter.go
+     ├── set.go
+     └── set_test.go
+```
+
+## Test Coverage
+```shell
+➜  lmwn-assignment-go git:(main) go test -cover ./...
+?       lmwn-assignment-go/cmd  [no test files]
+ok      lmwn-assignment-go/src  1.461s  coverage: 72.5% of statements
+```
 
 ## Dependencies
 ```shell
