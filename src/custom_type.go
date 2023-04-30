@@ -30,3 +30,24 @@ func (s *NanString) UnmarshalJSON(data []byte) error {
 	}
 	return nil
 }
+
+type NullInt int
+
+func (i *NullInt) UnmarshalJSON(data []byte) error {
+	var v interface{}
+	err := json.Unmarshal(data, &v)
+	if err != nil {
+		return err
+	}
+
+	items := reflect.ValueOf(v)
+	switch items.Kind() {
+	case reflect.Float64:
+		// number field in JSON
+		*i = NullInt(items.Float())
+	default:
+		// null, Nan, string
+		*i = -1
+	}
+	return nil
+}

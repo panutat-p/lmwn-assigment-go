@@ -5,7 +5,7 @@ type Response struct {
 }
 
 type Person struct {
-	Age            *int      `json:"Age,omitempty"`
+	Age            NullInt   `json:"Age"`
 	ConfirmDate    string    `json:"ConfirmDate,omitempty"`
 	District       string    `json:"District,omitempty"`
 	Gender         string    `json:"Gender,omitempty"`

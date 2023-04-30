@@ -1,20 +1,17 @@
 package src
 
-import "fmt"
-
 func GenerateSummary(report []*Person, provinces Set) Summary {
 	var (
 		summary = NewSummary()
 	)
 
 	for _, e := range report {
-		fmt.Printf("%+v\n", e)
 		key := string(e.ProvinceEn)
 		if provinces.Has(key) {
 			if _, ok := summary.Province[key]; !ok {
 				summary.Province[key] = e.ProvinceID
 			}
-			group := DetermineAge(e.Age)
+			group := DetermineAge(int(e.Age))
 			summary.AgeGroup[group] += 1
 		}
 	}
@@ -22,12 +19,11 @@ func GenerateSummary(report []*Person, provinces Set) Summary {
 	return summary
 }
 
-func DetermineAge(v *int) string {
-	if v == nil {
+func DetermineAge(age int) string {
+	if age == -1 {
 		return "N/A"
 	}
 
-	age := *v
 	switch {
 	case age >= 0 && age <= 30:
 		return "0-30"
