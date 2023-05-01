@@ -5,10 +5,14 @@ The web server will listen on port `8080`
 
 ```shell
 go mod tidy
-```
-
-```shell
 go run cmd/main.go
+```
+or
+```shell
+# Linux
+./bin/app
+# Windows
+open app.exe
 ```
 
 ## How to test
@@ -68,4 +72,11 @@ go get -u github.com/gin-gonic/gin
 
 go get -u github.com/golang/mock/mockgen/model
 go install github.com/golang/mock/mockgen@v1.6.0
+```
+
+## Build
+
+```shell
+go build -o ./bin/app cmd/main.go
+GOOS=windows GOARCH=amd64 go build -o ./bin/app.exe cmd/main.go
 ```
