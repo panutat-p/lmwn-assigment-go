@@ -1,6 +1,8 @@
 # lmwn-assignment-go
 
 ## How to Run
+The web server will listen on port `8080`
+
 ```shell
 go mod tidy
 ```
@@ -28,26 +30,29 @@ open `test.http`, send a HTTP request using Goland or VS Code Rest Client
 ```
 .
 ├── cmd
-│    └── main.go
-└── src
-     ├── biz.go
-     ├── biz_test.go
-     ├── custom_type.go
-     ├── entity.go
-     ├── handler.go
-     ├── handler_test.go
-     ├── http.go
-     ├── http_test.go
-     ├── mock_reporter.go
-     ├── set.go
-     └── set_test.go
+│        └── main.go
+└──  src
+         ├── biz.go
+         ├── biz_test.go
+         ├── custom_type.go
+         ├── domain.go
+         ├── handler.go
+         ├── handler_test.go
+         ├── http.go
+         ├── http_test.go
+         ├── mock_reporter.go
+         ├── set.go
+         └── set_test.go
 ```
 
-## Test Coverage
-```shell
-➜  lmwn-assignment-go git:(main) go test -cover ./...
+## Unit Test
+```
+➜  lmwn-assignment-go git:(main) ✗ go test ./...
 ?       lmwn-assignment-go/cmd  [no test files]
-ok      lmwn-assignment-go/src  1.461s  coverage: 72.5% of statements
+ok      lmwn-assignment-go/src  1.440s
+➜  lmwn-assignment-go git:(main) ✗ go test -cover ./...
+?       lmwn-assignment-go/cmd  [no test files]
+ok      lmwn-assignment-go/src  1.355s  coverage: 75.5% of statements
 ```
 
 ## Dependencies
