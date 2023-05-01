@@ -27,7 +27,7 @@ func NewReport(url string, timeout time.Duration) *Report {
 
 func (r Report) GetCovidReport() ([]*Person, error) {
 	var (
-		report Response
+		report PayloadReport
 	)
 
 	resp, err := r.c.Get(r.baseURL)

@@ -1,6 +1,6 @@
 package src
 
-type Response struct {
+type PayloadReport struct {
 	Data []*Person `json:"data"`
 }
 
