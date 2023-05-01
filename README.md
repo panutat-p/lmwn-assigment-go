@@ -55,6 +55,11 @@ ok      lmwn-assignment-go/src  1.440s
 ok      lmwn-assignment-go/src  1.355s  coverage: 75.5% of statements
 ```
 
+## Results
+see more at `./result/...`
+
+![get_summary_filter.png](result%2Fget_summary_filter.png)
+
 ## Dependencies
 ```shell
 go mod init lmwn-assignment-go
