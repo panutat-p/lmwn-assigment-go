@@ -55,3 +55,35 @@ func TestGenerateFilteredSummary_empty(t *testing.T) {
 		t.Error("want", want, "but got", got)
 	}
 }
+
+func TestDetermineAge_child(t *testing.T) {
+	want := "0-30"
+	got := DetermineAge(15)
+	if got != want {
+		t.Error("want", want, "but got", got)
+	}
+}
+
+func TestDetermineAge_mid(t *testing.T) {
+	want := "0-60"
+	got := DetermineAge(45)
+	if got != want {
+		t.Error("want", want, "but got", got)
+	}
+}
+
+func TestDetermineAge_aged(t *testing.T) {
+	want := "61+"
+	got := DetermineAge(80)
+	if got != want {
+		t.Error("want", want, "but got", got)
+	}
+}
+
+func TestDetermineAge_null(t *testing.T) {
+	want := "N/A"
+	got := DetermineAge(-1)
+	if got != want {
+		t.Error("want", want, "but got", got)
+	}
+}
