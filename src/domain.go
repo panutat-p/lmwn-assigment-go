@@ -6,7 +6,7 @@ type PayloadReport struct {
 
 type Person struct {
 	Age            NullInt   `json:"Age"`
-	ConfirmDate    string    `json:"omitempty"`
+	ConfirmDate    string    `json:"ConfirmDate,omitempty"`
 	District       string    `json:"District,omitempty"`
 	Gender         string    `json:"Gender,omitempty"`
 	GenderEn       string    `json:"GenderEn,omitempty"`
