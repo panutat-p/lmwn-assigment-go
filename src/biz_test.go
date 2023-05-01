@@ -8,7 +8,7 @@ import (
 func TestGenerateSummary_one_person(t *testing.T) {
 	var summary = NewSummary()
 	summary.Province["Leyndell"] = 42
-	summary.AgeGroup["61+"] = 1
+	summary.AgeGroup["60+"] = 1
 	want := summary
 
 	morrgot := Person{ProvinceID: 42, ProvinceEn: "Leyndell", Age: 110}
@@ -38,7 +38,7 @@ func TestGenerateFilteredSummary_one_person(t *testing.T) {
 func TestGenerateFilteredSummary_not_in_filter(t *testing.T) {
 	var summary = NewSummary()
 	summary.Province["Leyndell"] = 42
-	summary.AgeGroup["61+"] = 1
+	summary.AgeGroup["60+"] = 1
 	want := summary
 
 	morrgot := Person{ProvinceID: 42, ProvinceEn: "Leyndell", Age: 110}
@@ -65,7 +65,7 @@ func TestDetermineAge_child(t *testing.T) {
 }
 
 func TestDetermineAge_mid(t *testing.T) {
-	want := "0-60"
+	want := "31-60"
 	got := DetermineAge(45)
 	if got != want {
 		t.Error("want", want, "but got", got)
@@ -73,7 +73,7 @@ func TestDetermineAge_mid(t *testing.T) {
 }
 
 func TestDetermineAge_aged(t *testing.T) {
-	want := "61+"
+	want := "60+"
 	got := DetermineAge(80)
 	if got != want {
 		t.Error("want", want, "but got", got)

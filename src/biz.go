@@ -46,9 +46,9 @@ func DetermineAge(age int) string {
 	case age >= 0 && age <= 30:
 		return "0-30"
 	case age <= 60:
-		return "0-60"
+		return "31-60"
 	case age > 60:
-		return "61+"
+		return "60+"
 	default:
 		return "N/A"
 	}
