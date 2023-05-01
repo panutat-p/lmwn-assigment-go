@@ -8,12 +8,7 @@ go mod tidy
 go run cmd/main.go
 ```
 or
-```shell
-# Linux
-./bin/app
-# Windows
-open app.exe
-```
+Open a executable file located on `./bin/...`
 
 ## How to test
 
@@ -77,6 +72,8 @@ go install github.com/golang/mock/mockgen@v1.6.0
 ## Build
 
 ```shell
-go build -o ./bin/app cmd/main.go
-GOOS=windows GOARCH=amd64 go build -o ./bin/app.exe cmd/main.go
+GOOS=linux GOARCH=amd64 go build -o ./bin/linux cmd/main.go
+GOOS=darwin GOARCH=amd64 go build -o ./bin/mac_intel cmd/main.go
+GOOS=darwin GOARCH=arm64 go build -o ./bin/mac_m1 cmd/main.go
+GOOS=windows GOARCH=amd64 go build -o ./bin/windows.exe cmd/main.go
 ```
